@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.examples.ivmdiaz</groupId>
 	<artifactId>favorite-anime-back</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>favorite-anime-back</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
@@ -45,6 +45,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.modelmapper.extensions</groupId>
+			<artifactId>modelmapper-spring</artifactId>
+			<version>3.0.0</version>
 		</dependency>
 	</dependencies>
 

@@ -26,4 +26,7 @@ public class DevilFruitType {
     private String imageSummary;
     @Column(name = "summary")
     private String summary;
+
+    @OneToOne(mappedBy = "type")
+    private DevilFruit devilFruit;
 }

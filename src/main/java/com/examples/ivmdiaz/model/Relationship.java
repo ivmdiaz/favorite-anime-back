@@ -20,4 +20,7 @@ public class Relationship {
     private String code;
     @Column(name = "name")
     private String name;
+
+    @OneToOne(mappedBy = "relationship")
+    private CharacterRelationship characterRelationship;
 }

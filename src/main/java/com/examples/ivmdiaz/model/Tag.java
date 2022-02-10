@@ -24,4 +24,7 @@ public class Tag {
     private String iconUrl;
     @Column(name = "summary")
     private String summary;
+
+    @OneToOne(mappedBy = "tag")
+    private CharacterTag characterTag;
 }

@@ -22,4 +22,7 @@ public class Location {
     private String name;
     @Column(name = "summary")
     private String summary;
+
+    @OneToOne(mappedBy = "location")
+    private CharacterSummary characterSummary;
 }

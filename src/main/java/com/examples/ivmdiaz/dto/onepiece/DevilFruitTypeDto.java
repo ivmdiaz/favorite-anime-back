@@ -1,4 +1,4 @@
-package com.examples.ivmdiaz.dto;
+package com.examples.ivmdiaz.dto.onepiece;
 
 import lombok.Data;
 

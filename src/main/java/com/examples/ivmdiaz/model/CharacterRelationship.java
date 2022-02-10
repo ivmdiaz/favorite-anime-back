@@ -16,10 +16,13 @@ public class CharacterRelationship {
     private Integer id;
     @Column(name = "anime_id")
     private Integer animeId;
-    @Column(name = "character_id")
-    private Integer characterId;
-    @Column(name = "relationship_id")
-    private Integer relationshipId;
-    @Column(name = "relationship_character_id")
-    private Integer relationshipCharacterId;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "character_id", referencedColumnName = "id")
+    private Character character;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "relationship_id", referencedColumnName = "id")
+    private Relationship relationship;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "relationship_character_id", referencedColumnName = "id")
+    private Character relationshipCharacter;
 }

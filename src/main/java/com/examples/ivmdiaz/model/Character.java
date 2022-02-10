@@ -25,4 +25,11 @@ public class Character {
     private LocalDate birthday;
     @Column(name = "image_url")
     private String imageUrl;
+
+    @OneToOne(mappedBy = "character")
+    private CharacterSummary characterSummary;
+    @OneToOne(mappedBy = "character")
+    private CharacterRelationship characterRelationship;
+    @OneToOne(mappedBy = "relationshipCharacter")
+    private CharacterRelationship characterRelated;
 }

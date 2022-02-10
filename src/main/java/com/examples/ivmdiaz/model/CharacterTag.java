@@ -18,6 +18,7 @@ public class CharacterTag {
     private Integer animeId;
     @Column(name = "character_id")
     private Integer characterId;
-    @Column(name = "tag_id")
-    private Integer tagId;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "tag_id", referencedColumnName = "id")
+    private Tag tag;
 }

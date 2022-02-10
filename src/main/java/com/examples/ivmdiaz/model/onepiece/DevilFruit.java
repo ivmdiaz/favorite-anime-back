@@ -14,8 +14,9 @@ public class DevilFruit {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "onepiece_devil_fruit_generator")
     @Column(name = "id")
     private Integer id;
-    @Column(name = "type_id")
-    private Integer typeId;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "type_id", referencedColumnName = "id")
+    private DevilFruitType type;
     @Column(name = "code")
     private String code;
     @Column(name = "name")
@@ -34,4 +35,7 @@ public class DevilFruit {
     private String introduction;
     @Column(name = "history")
     private String history;
+
+    @OneToOne(mappedBy = "devilFruit")
+    private CharacterDevilFruit characterDevilFruit;
 }

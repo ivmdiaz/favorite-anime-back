@@ -16,10 +16,12 @@ public class CharacterSummary {
     private Integer id;
     @Column(name = "anime_id")
     private Integer animeId;
-    @Column(name = "character_id")
-    private Integer characterId;
-    @Column(name = "location_id")
-    private Integer locationId;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "character_id", referencedColumnName = "id")
+    private Character character;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "location_id", referencedColumnName = "id")
+    private Location location;
     @Column(name = "introduction")
     private String introduction;
     @Column(name = "history")

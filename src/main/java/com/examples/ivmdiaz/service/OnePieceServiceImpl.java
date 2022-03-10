@@ -1,17 +1,14 @@
 package com.examples.ivmdiaz.service;
 
-import com.examples.ivmdiaz.dto.CharacterDto;
-import com.examples.ivmdiaz.dto.GalleryDto;
-import com.examples.ivmdiaz.dto.onepiece.CharacterDetailOnePieceDto;
-import com.examples.ivmdiaz.dto.onepiece.DevilFruitDto;
-import com.examples.ivmdiaz.dto.onepiece.DevilFruitTypeDto;
-import com.examples.ivmdiaz.model.onepiece.CharacterDevilFruit;
-import com.examples.ivmdiaz.model.onepiece.DevilFruit;
-import com.examples.ivmdiaz.repository.onepiece.DevilFruitCharacterRepository;
-import com.examples.ivmdiaz.util.Constants;
+import com.examples.ivmdiaz.dto.master.CharacterDatailDto;
+import com.examples.ivmdiaz.dto.master.CharacterDto;
+import com.examples.ivmdiaz.dto.anime.CharacterDetailOnePieceDto;
+import com.examples.ivmdiaz.dto.anime.DevilFruitDto;
+import com.examples.ivmdiaz.enums.AnimeEnum;
+import com.examples.ivmdiaz.model.anime.CharacterDevilFruit;
+import com.examples.ivmdiaz.repository.anime.DevilFruitCharacterRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,12 +23,12 @@ public class OnePieceServiceImpl extends AnimeServiceBase implements OnePieceSer
 
     @Override
     public List<CharacterDto> getAllCharacters() {
-        return this.getAllCharacters(Constants.ONE_PIECE);
+        return this.getAllCharacters(AnimeEnum.ONE_PIECE.getCode());
     }
 
     @Override
     public CharacterDetailOnePieceDto getCharacterDetailOnePieceById(final Integer id) {
-        final CharacterDetailOnePieceDto resultDto = (CharacterDetailOnePieceDto) getCharacterDetailById(id);
+        final CharacterDetailOnePieceDto resultDto = new CharacterDetailOnePieceDto(getCharacterDetailById(id));
         final CharacterDevilFruit cdf = this.mDevilFruitCharacterRepository.findByCharacterId(id);
         if (Objects.nonNull(cdf)) {
             log.info("the character {} have a devil fruit", id);

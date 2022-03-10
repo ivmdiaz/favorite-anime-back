@@ -22,15 +22,7 @@ public class ApiExceptionBase extends RuntimeException {
         super(message);
         this.errors.addAll(errors);
     }
-
-    public ApiExceptionBase(final Throwable cause) {
-        super(cause);
-    }
-
-    public ApiExceptionBase(final String message, final Throwable cause) {
-        super(message, cause);
-    }
-
+    
     protected Boolean hasErrors() {
         return !CollectionUtils.isEmpty(errors);
     }

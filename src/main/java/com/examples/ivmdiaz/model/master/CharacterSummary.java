@@ -11,8 +11,7 @@ import java.util.List;
 public class CharacterSummary {
 
     @Id
-    @SequenceGenerator(name = "character_summary_generator", sequenceName = "character_summary_id_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "character_summary_generator")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
     @Column(name = "series_id")

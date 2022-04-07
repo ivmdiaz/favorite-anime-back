@@ -10,8 +10,7 @@ import javax.persistence.*;
 public class CharacterRelationship {
 
     @Id
-    @SequenceGenerator(name = "character_relationship_generator", sequenceName = "character_relationship_id_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "character_relationship_generator")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
     @ManyToOne

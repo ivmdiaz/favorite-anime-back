@@ -11,8 +11,7 @@ import java.time.LocalDate;
 public class Series {
 
     @Id
-    @SequenceGenerator(name = "series_generator", sequenceName = "series_id_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "series_generator")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
     @ManyToOne

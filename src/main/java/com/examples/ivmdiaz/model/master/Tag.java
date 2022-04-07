@@ -10,8 +10,7 @@ import javax.persistence.*;
 public class Tag {
 
     @Id
-    @SequenceGenerator(name = "tag_generator", sequenceName = "tag_id_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tag_generator")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
     @Column(name = "series_id")

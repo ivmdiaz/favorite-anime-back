@@ -10,8 +10,7 @@ import javax.persistence.*;
 public class CharacterDevilFruit {
 
     @Id
-    @SequenceGenerator(name = "character_devil_fruit_generator", sequenceName = "character_devil_fruit_id_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "character_devil_fruit_generator")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
     @Column(name = "character_id")

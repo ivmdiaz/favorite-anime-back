@@ -11,8 +11,7 @@ import java.util.List;
 public class Location {
 
     @Id
-    @SequenceGenerator(name = "location_generator", sequenceName = "location_id_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "location_generator")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
     @Column(name = "series_id")

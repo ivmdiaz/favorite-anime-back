@@ -10,8 +10,7 @@ import javax.persistence.*;
 public class Relationship {
 
     @Id
-    @SequenceGenerator(name = "relationship_generator", sequenceName = "relationship_id_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "relationship_generator")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
     @Column(name = "series_id")

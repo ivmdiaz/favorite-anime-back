@@ -11,8 +11,7 @@ import javax.persistence.*;
 public class DevilFruitType {
 
     @Id
-    @SequenceGenerator(name = "devil_fruit_type_generator", sequenceName = "devil_fruit_type_id_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "devil_fruit_type_generator")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
     @ManyToOne

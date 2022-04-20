@@ -7,13 +7,11 @@ CREATE SCHEMA anime;
 create table anime.devil_fruit_type
 (
     id       serial                 not null,
-    image_id int8                   not null,
     code     character varying(20),
     name     character varying(100) not null,
     summary  text,
     primary key (id)
 );
-alter table if exists anime.devil_fruit_type add constraint fk_devil_fruit_type_image_id foreign key (image_id) references master.image (id);
 
 create table anime.devil_fruit
 (

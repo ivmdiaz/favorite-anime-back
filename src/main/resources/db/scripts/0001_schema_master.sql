@@ -42,17 +42,27 @@ create table master.tag
 );
 alter table if exists master.tag add constraint fk_tag_series_id foreign key (series_id) references master.series (id);
 
-create table master.image
+create table master.category_image
 (
     id        serial not null,
-    series_id int8   not null,
-    url       character varying(500),
+    code      character varying(20),
     name      character varying(50),
-    summary   text,
-    tag       character varying(200),
+    primary key (id)
+);
+
+create table master.image
+(
+    id          serial not null,
+    series_id   int8   not null,
+    category_id int8   not null,
+    code        character varying(50),
+    filename    character varying(100),
+    url         character varying(500),
+    summary     text,
     primary key (id)
 );
 alter table if exists master.image add constraint fk_image_series_id foreign key (series_id) references master.series (id);
+alter table if exists master.image add constraint fk_image_category_id foreign key (category_id) references master.category_image (id);
 
 create table master.location
 (

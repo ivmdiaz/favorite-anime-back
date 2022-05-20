@@ -1,5 +1,6 @@
 package com.examples.ivmdiaz.controller.anime;
 
+import com.examples.ivmdiaz.dto.ResponseWrapperDto;
 import com.examples.ivmdiaz.dto.master.CharacterDto;
 import com.examples.ivmdiaz.dto.anime.CharacterDetailOnePieceDto;
 import com.examples.ivmdiaz.service.OnePieceService;
@@ -19,13 +20,14 @@ public class OnePieceController {
     private final OnePieceService mOnePieceService;
 
     @GetMapping("/character")
-    public List<CharacterDto> getAllCharacters() {
-        return mOnePieceService.getAllCharacters();
+    public ResponseWrapperDto<List<CharacterDto>> getAllCharacters() {
+        return new ResponseWrapperDto<>(mOnePieceService.getAllCharacters());
     }
 
     @GetMapping("/character/{characterId}")
-    public CharacterDetailOnePieceDto getCharacterDetailById(@PathVariable(name = "characterId") Integer characterId) {
-        return mOnePieceService.getCharacterDetailOnePieceById(characterId);
+    public ResponseWrapperDto<CharacterDetailOnePieceDto> getCharacterDetailById(
+            @PathVariable(name = "characterId") Integer characterId) {
+        return new ResponseWrapperDto<>(mOnePieceService.getCharacterDetailOnePieceById(characterId));
     }
 
 }

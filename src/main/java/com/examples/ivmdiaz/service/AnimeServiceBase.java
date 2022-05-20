@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -30,9 +31,13 @@ public abstract class AnimeServiceBase {
     }
 
     protected CharacterDatailDto getCharacterDetailById(final Integer id) {
+        CharacterDatailDto resultDto = null;
         final CharacterSummary cs = characterSummaryRepository.findByCharacterId(id);
         final List<CharacterRelationship> cr = characterRelationshipRepository.findByCharacterId(id);
-        return new CharacterDatailDto(cs, cr);
+        if(Objects.nonNull(cs) && Objects.nonNull(cr)) {
+            resultDto = new CharacterDatailDto(cs, cr);
+        }
+        return resultDto;
     }
 
     @Autowired

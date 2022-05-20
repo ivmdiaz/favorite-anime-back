@@ -1,11 +1,13 @@
 package com.examples.ivmdiaz.model.master;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "character_summary", schema = "master")
 public class CharacterSummary {
@@ -14,8 +16,6 @@ public class CharacterSummary {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
-    @Column(name = "series_id")
-    private Integer seriesId;
     @ManyToOne
     @JoinColumn(name = "character_id")
     private Character character;

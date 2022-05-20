@@ -28,13 +28,17 @@ public class OnePieceServiceImpl extends AnimeServiceBase implements OnePieceSer
 
     @Override
     public CharacterDetailOnePieceDto getCharacterDetailOnePieceById(final Integer id) {
-        final CharacterDetailOnePieceDto resultDto = new CharacterDetailOnePieceDto(getCharacterDetailById(id));
+        CharacterDetailOnePieceDto resultOnePieceDto = null;
+        final CharacterDatailDto resultDto = this.getCharacterDetailById(id);
         final CharacterDevilFruit cdf = this.mDevilFruitCharacterRepository.findByCharacterId(id);
-        if (Objects.nonNull(cdf)) {
-            log.info("the character {} have a devil fruit", id);
-            resultDto.setDevilFruit(new DevilFruitDto(cdf.getDevilFruit()));
+        if (Objects.nonNull(resultDto)) {
+            resultOnePieceDto = new CharacterDetailOnePieceDto(resultDto);
+            if(Objects.nonNull(cdf)) {
+                log.info("the character {} have a devil fruit", id);
+                resultOnePieceDto.setDevilFruit(new DevilFruitDto(cdf.getDevilFruit()));
+            }
         }
-        return resultDto;
+        return resultOnePieceDto;
     }
 
 }

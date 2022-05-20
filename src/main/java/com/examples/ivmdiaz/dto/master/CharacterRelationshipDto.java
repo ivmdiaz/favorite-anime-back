@@ -12,7 +12,7 @@ public class CharacterRelationshipDto {
 
     public CharacterRelationshipDto(CharacterRelationship cr) {
         final ModelMapper mapper = new ModelMapper();
-        this.character = mapper.map(cr.getCharacter(), CharacterDto.class);
+        this.character = mapper.map(cr.getRelationshipCharacter(), CharacterDto.class);
         this.relationship = mapper.map(cr.getRelationship(), KeyValueDto.class);
     }
 }

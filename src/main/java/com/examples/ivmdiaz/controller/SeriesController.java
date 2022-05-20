@@ -1,5 +1,6 @@
 package com.examples.ivmdiaz.controller;
 
+import com.examples.ivmdiaz.dto.ResponseWrapperDto;
 import com.examples.ivmdiaz.dto.master.SeriesDto;
 import com.examples.ivmdiaz.service.SeriesService;
 import lombok.AllArgsConstructor;
@@ -17,7 +18,7 @@ public class SeriesController {
     private final SeriesService mSeriesService;
 
     @GetMapping("/anime")
-    public List<SeriesDto> getAllAnime() {
-        return mSeriesService.getAllAnime();
+    public ResponseWrapperDto<List<SeriesDto>> getAllAnime() {
+        return new ResponseWrapperDto<>(mSeriesService.getAllAnime());
     }
 }

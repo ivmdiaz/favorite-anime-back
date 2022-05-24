@@ -10,9 +10,9 @@ public class CharacterRelationshipDto {
     private CharacterDto character;
     private KeyValueDto relationship;
 
-    public CharacterRelationshipDto(CharacterRelationship cr) {
+    public CharacterRelationshipDto(CharacterRelationship characterRelationship) {
         final ModelMapper mapper = new ModelMapper();
-        this.character = mapper.map(cr.getRelationshipCharacter(), CharacterDto.class);
-        this.relationship = mapper.map(cr.getRelationship(), KeyValueDto.class);
+        this.character = mapper.map(characterRelationship.getId().getCharacter(), CharacterDto.class);
+        this.relationship = mapper.map(characterRelationship.getId().getRelationship(), KeyValueDto.class);
     }
 }

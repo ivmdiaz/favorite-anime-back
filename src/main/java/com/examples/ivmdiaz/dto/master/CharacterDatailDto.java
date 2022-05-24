@@ -1,9 +1,8 @@
 package com.examples.ivmdiaz.dto.master;
 
+import com.examples.ivmdiaz.model.master.CharacterDetail;
 import com.examples.ivmdiaz.model.master.CharacterRelationship;
-import com.examples.ivmdiaz.model.master.CharacterSummary;
 import lombok.Data;
-import lombok.experimental.SuperBuilder;
 import org.modelmapper.ModelMapper;
 import org.springframework.util.CollectionUtils;
 
@@ -14,6 +13,7 @@ import java.util.stream.Collectors;
 @Data
 public class CharacterDatailDto {
 
+    private Integer characterDetailId;
     private CharacterDto character;
     private LocationDto location;
     private String introduction;
@@ -25,6 +25,7 @@ public class CharacterDatailDto {
     private List<CharacterRelationshipDto> relationships;
 
     public CharacterDatailDto(final CharacterDatailDto other) {
+        this.characterDetailId = other.getCharacterDetailId();
         this.character = other.getCharacter();
         this.location = other.getLocation();
         this.introduction = other.getIntroduction();
@@ -35,29 +36,34 @@ public class CharacterDatailDto {
         this.relationships = other.getRelationships();
     }
 
-    public CharacterDatailDto(CharacterSummary cs, List<CharacterRelationship> cr) {
-        if (Objects.nonNull(cs)) {
-            if (Objects.nonNull(cs.getCharacter())) {
-                this.character = new ModelMapper().map(cs.getCharacter(), CharacterDto.class);
+    public CharacterDatailDto(final CharacterDetail detail) {
+        if (Objects.nonNull(detail)) {
+            this.characterDetailId = detail.getId();
+            if (Objects.nonNull(detail.getCharacter())) {
+                this.character = new ModelMapper().map(detail.getCharacter(), CharacterDto.class);
             }
-            if (Objects.nonNull(cs.getLocation())) {
-                this.location = new ModelMapper().map(cs.getLocation(), LocationDto.class);
+            if (Objects.nonNull(detail.getLocation())) {
+                this.location = new ModelMapper().map(detail.getLocation(), LocationDto.class);
             }
-            this.introduction = cs.getIntroduction();
-            this.history = cs.getHistory();
-            this.abilities = cs.getAbilities();
+            this.introduction = detail.getIntroduction();
+            this.history = detail.getHistory();
+            this.abilities = detail.getAbilities();
 
-            if (!CollectionUtils.isEmpty(cs.getGallery())) {
-                this.gallery = cs.getGallery()
+            if (!CollectionUtils.isEmpty(detail.getGallery())) {
+                this.gallery = detail.getGallery()
                         .stream().map(x -> new ModelMapper().map(x, ImageDto.class)).collect(Collectors.toList());
             }
-            if (!CollectionUtils.isEmpty(cs.getTags())) {
-                this.tags = cs.getTags()
+            if (!CollectionUtils.isEmpty(detail.getTags())) {
+                this.tags = detail.getTags()
                         .stream().map(x -> new ModelMapper().map(x, TagDto.class)).collect(Collectors.toList());
             }
         }
-        if (!CollectionUtils.isEmpty(cr)) {
-            this.relationships = cr.stream().map(CharacterRelationshipDto::new).collect(Collectors.toList());
+
+    }
+
+    public void mapRelationships(final List<CharacterRelationship> relationships) {
+        if (!CollectionUtils.isEmpty(relationships)) {
+            this.relationships = relationships.stream().map(CharacterRelationshipDto::new).collect(Collectors.toList());
         }
     }
 }

@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface DevilFruitCharacterRepository extends ReadOnlyRepository<CharacterDevilFruit, Integer> {
 
-    CharacterDevilFruit findByCharacterId(Integer characterId);
+    CharacterDevilFruit findByCharacterDetailId(Integer characterId);
 
 }

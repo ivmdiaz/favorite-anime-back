@@ -8,5 +8,5 @@ import java.util.List;
 @Repository
 public interface CharacterRelationshipRepository extends ReadOnlyRepository<CharacterRelationship, Integer> {
 
-    List<CharacterRelationship> findByCharacterId(Integer characterId);
+    List<CharacterRelationship> findByIdCharacterDetailId(Integer characterDetailId);
 }

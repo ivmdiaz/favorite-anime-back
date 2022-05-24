@@ -2,11 +2,10 @@ package com.examples.ivmdiaz.service;
 
 import com.examples.ivmdiaz.dto.master.CharacterDatailDto;
 import com.examples.ivmdiaz.dto.master.CharacterDto;
-import com.examples.ivmdiaz.model.master.CharacterRelationship;
-import com.examples.ivmdiaz.model.master.CharacterSummary;
+import com.examples.ivmdiaz.model.master.CharacterDetail;
 import com.examples.ivmdiaz.repository.master.CharacterRelationshipRepository;
 import com.examples.ivmdiaz.repository.master.CharacterRepository;
-import com.examples.ivmdiaz.repository.master.CharacterSummaryRepository;
+import com.examples.ivmdiaz.repository.master.CharacterDetailRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +20,7 @@ import java.util.stream.Collectors;
 public abstract class AnimeServiceBase {
 
     protected CharacterRepository characterRepository;
-    protected CharacterSummaryRepository characterSummaryRepository;
+    protected CharacterDetailRepository characterDetailRepository;
     protected CharacterRelationshipRepository characterRelationshipRepository;
 
     protected List<CharacterDto> getAllCharacters(final String seriesCode) {
@@ -30,12 +29,12 @@ public abstract class AnimeServiceBase {
                 .collect(Collectors.toList());
     }
 
-    protected CharacterDatailDto getCharacterDetailById(final Integer id) {
+    protected CharacterDatailDto getCharacterDetailById(final Integer characterId) {
         CharacterDatailDto resultDto = null;
-        final CharacterSummary cs = characterSummaryRepository.findByCharacterId(id);
-        final List<CharacterRelationship> cr = characterRelationshipRepository.findByCharacterId(id);
-        if(Objects.nonNull(cs) && Objects.nonNull(cr)) {
-            resultDto = new CharacterDatailDto(cs, cr);
+        final CharacterDetail detail = characterDetailRepository.findFirstByCharacterId(characterId);
+        if(Objects.nonNull(detail)) {
+            resultDto = new CharacterDatailDto(detail);
+            resultDto.mapRelationships(characterRelationshipRepository.findByIdCharacterDetailId(detail.getId()));
         }
         return resultDto;
     }
@@ -46,8 +45,8 @@ public abstract class AnimeServiceBase {
     }
 
     @Autowired
-    public void setCharacterSummaryRepository(CharacterSummaryRepository characterSummaryRepository) {
-        this.characterSummaryRepository = characterSummaryRepository;
+    public void setCharacterSummaryRepository(CharacterDetailRepository characterDetailRepository) {
+        this.characterDetailRepository = characterDetailRepository;
     }
 
     @Autowired

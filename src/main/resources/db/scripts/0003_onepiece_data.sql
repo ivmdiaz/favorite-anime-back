@@ -81,47 +81,47 @@ insert into master.tag (series_id, code, name) values
 (_series_id,'OPTG060','worst generation'),
 (_series_id,'OPTG062','yonko');
 
-insert into master.category_image (code, name) values ('OPIC001', 'one-piece-location-gallery');
-insert into master.category_image (code, name) values ('OPIC002', 'one-piece-character-list');
+insert into master.category_image (code, name) values ('OPCI001', 'one-piece-location-gallery');
+insert into master.category_image (code, name) values ('OPCI002', 'one-piece-character-list');
 
 _series_id := (select id from master.series where code = 'OP01');
 
 insert into master.image (series_id, category_id, code, filename) values
-(_series_id, (select id from master.category_image where code = 'OPIC001'), 'east-blue','east-blue-001.png'),
-(_series_id, (select id from master.category_image where code = 'OPIC001'), 'east-blue','east-blue-002.png'),
-(_series_id, (select id from master.category_image where code = 'OPIC001'), 'east-blue','east-blue-003.png'),
-(_series_id, (select id from master.category_image where code = 'OPIC001'), 'grand-line','grand-line-001.png'),
-(_series_id, (select id from master.category_image where code = 'OPIC001'), 'grand-line','grand-line-002.png'),
-(_series_id, (select id from master.category_image where code = 'OPIC001'), 'grand-line','grand-line-003.png'),
-(_series_id, (select id from master.category_image where code = 'OPIC001'), 'grand-line','grand-line-004.png'),
-(_series_id, (select id from master.category_image where code = 'OPIC001'), 'north-blue','north-blue-001.png'),
-(_series_id, (select id from master.category_image where code = 'OPIC001'), 'north-blue','north-blue-002.png'),
-(_series_id, (select id from master.category_image where code = 'OPIC001'), 'south-blue','south-blue-001.png'),
-(_series_id, (select id from master.category_image where code = 'OPIC001'), 'south-blue','south-blue-002.png'),
-(_series_id, (select id from master.category_image where code = 'OPIC001'), 'west-blue','west-blue-001.png'),
-(_series_id, (select id from master.category_image where code = 'OPIC001'), 'west-blue','west-blue-002.png');
+(_series_id, (select id from master.category_image where code = 'OPCI001'), 'east-blue','east-blue-001.png'),
+(_series_id, (select id from master.category_image where code = 'OPCI001'), 'east-blue','east-blue-002.png'),
+(_series_id, (select id from master.category_image where code = 'OPCI001'), 'east-blue','east-blue-003.png'),
+(_series_id, (select id from master.category_image where code = 'OPCI001'), 'grand-line','grand-line-001.png'),
+(_series_id, (select id from master.category_image where code = 'OPCI001'), 'grand-line','grand-line-002.png'),
+(_series_id, (select id from master.category_image where code = 'OPCI001'), 'grand-line','grand-line-003.png'),
+(_series_id, (select id from master.category_image where code = 'OPCI001'), 'grand-line','grand-line-004.png'),
+(_series_id, (select id from master.category_image where code = 'OPCI001'), 'north-blue','north-blue-001.png'),
+(_series_id, (select id from master.category_image where code = 'OPCI001'), 'north-blue','north-blue-002.png'),
+(_series_id, (select id from master.category_image where code = 'OPCI001'), 'south-blue','south-blue-001.png'),
+(_series_id, (select id from master.category_image where code = 'OPCI001'), 'south-blue','south-blue-002.png'),
+(_series_id, (select id from master.category_image where code = 'OPCI001'), 'west-blue','west-blue-001.png'),
+(_series_id, (select id from master.category_image where code = 'OPCI001'), 'west-blue','west-blue-002.png');
 
 insert into master.image (series_id, category_id, code, filename) values
-(_series_id, (select id from master.category_image where code = 'OPIC002'), 'character-list-ace','ace.png'),
-(_series_id, (select id from master.category_image where code = 'OPIC002'), 'character-list-akainu','akainu.png'),
-(_series_id, (select id from master.category_image where code = 'OPIC002'), 'character-list-bigmom','bigmom.png'),
-(_series_id, (select id from master.category_image where code = 'OPIC002'), 'character-list-blackbeard','blackbeard.png'),
-(_series_id, (select id from master.category_image where code = 'OPIC002'), 'character-list-chopper','chopper.png'),
-(_series_id, (select id from master.category_image where code = 'OPIC002'), 'character-list-dragon','dragon.png'),
-(_series_id, (select id from master.category_image where code = 'OPIC002'), 'character-list-franky','franky.png'),
-(_series_id, (select id from master.category_image where code = 'OPIC002'), 'character-list-garp','garp.png'),
-(_series_id, (select id from master.category_image where code = 'OPIC002'), 'character-list-jinbe','jinbe.png'),
-(_series_id, (select id from master.category_image where code = 'OPIC002'), 'character-list-law','law.png'),
-(_series_id, (select id from master.category_image where code = 'OPIC002'), 'character-list-luffy','luffy.png'),
-(_series_id, (select id from master.category_image where code = 'OPIC002'), 'character-list-mihawk','mihawk.png'),
-(_series_id, (select id from master.category_image where code = 'OPIC002'), 'character-list-nami','nami.png'),
-(_series_id, (select id from master.category_image where code = 'OPIC002'), 'character-list-robin','robin.png'),
-(_series_id, (select id from master.category_image where code = 'OPIC002'), 'character-list-roger','roger.png'),
-(_series_id, (select id from master.category_image where code = 'OPIC002'), 'character-list-sanji','sanji.png'),
-(_series_id, (select id from master.category_image where code = 'OPIC002'), 'character-list-shanks','shanks.png'),
-(_series_id, (select id from master.category_image where code = 'OPIC002'), 'character-list-usopp','usopp.png'),
-(_series_id, (select id from master.category_image where code = 'OPIC002'), 'character-list-whitebeard','whitebeard.png'),
-(_series_id, (select id from master.category_image where code = 'OPIC002'), 'character-list-zoro','zoro.png');
+(_series_id, (select id from master.category_image where code = 'OPCI002'), 'character-list-ace','ace.png'),
+(_series_id, (select id from master.category_image where code = 'OPCI002'), 'character-list-akainu','akainu.png'),
+(_series_id, (select id from master.category_image where code = 'OPCI002'), 'character-list-bigmom','bigmom.png'),
+(_series_id, (select id from master.category_image where code = 'OPCI002'), 'character-list-blackbeard','blackbeard.png'),
+(_series_id, (select id from master.category_image where code = 'OPCI002'), 'character-list-chopper','chopper.png'),
+(_series_id, (select id from master.category_image where code = 'OPCI002'), 'character-list-dragon','dragon.png'),
+(_series_id, (select id from master.category_image where code = 'OPCI002'), 'character-list-franky','franky.png'),
+(_series_id, (select id from master.category_image where code = 'OPCI002'), 'character-list-garp','garp.png'),
+(_series_id, (select id from master.category_image where code = 'OPCI002'), 'character-list-jinbe','jinbe.png'),
+(_series_id, (select id from master.category_image where code = 'OPCI002'), 'character-list-law','law.png'),
+(_series_id, (select id from master.category_image where code = 'OPCI002'), 'character-list-luffy','luffy.png'),
+(_series_id, (select id from master.category_image where code = 'OPCI002'), 'character-list-mihawk','mihawk.png'),
+(_series_id, (select id from master.category_image where code = 'OPCI002'), 'character-list-nami','nami.png'),
+(_series_id, (select id from master.category_image where code = 'OPCI002'), 'character-list-robin','robin.png'),
+(_series_id, (select id from master.category_image where code = 'OPCI002'), 'character-list-roger','roger.png'),
+(_series_id, (select id from master.category_image where code = 'OPCI002'), 'character-list-sanji','sanji.png'),
+(_series_id, (select id from master.category_image where code = 'OPCI002'), 'character-list-shanks','shanks.png'),
+(_series_id, (select id from master.category_image where code = 'OPCI002'), 'character-list-usopp','usopp.png'),
+(_series_id, (select id from master.category_image where code = 'OPCI002'), 'character-list-whitebeard','whitebeard.png'),
+(_series_id, (select id from master.category_image where code = 'OPCI002'), 'character-list-zoro','zoro.png');
 
 insert into master.location (series_id, code, name, summary) values
 (_series_id,'OPLC01','North Blue','The North Blue is an ocean in the Blue Sea. The North Blue, like its sister seas, comprises almost entirely of the ocean, with scattered islands and a border with the Red Line. It is the birthplace of such figures as Sanji of the Straw Hat Pirates, Trafalgar Law of the Heart Pirates, and the famous explorer, Mont Blanc Noland.'),

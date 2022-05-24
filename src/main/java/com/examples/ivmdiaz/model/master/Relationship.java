@@ -1,13 +1,16 @@
 package com.examples.ivmdiaz.model.master;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "relationship", schema = "master")
-public class Relationship {
+public class Relationship implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

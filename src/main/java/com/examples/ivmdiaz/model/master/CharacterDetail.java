@@ -9,8 +9,8 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name = "character_summary", schema = "master")
-public class CharacterSummary {
+@Table(name = "character_detail", schema = "master")
+public class CharacterDetail {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,6 +22,8 @@ public class CharacterSummary {
     @ManyToOne
     @JoinColumn(name = "location_id")
     private Location location;
+    @Column(name = "code")
+    private String code;
     @Column(name = "introduction")
     private String introduction;
     @Column(name = "history")
@@ -32,7 +34,7 @@ public class CharacterSummary {
     @ManyToMany
     @JoinTable(
             name = "character_gallery", schema = "master",
-            joinColumns = @JoinColumn(name = "character_id"),
+            joinColumns = @JoinColumn(name = "character_detail_id"),
             inverseJoinColumns = @JoinColumn(name = "image_id")
     )
     private List<Image> gallery;
@@ -40,7 +42,7 @@ public class CharacterSummary {
     @ManyToMany
     @JoinTable(
             name = "character_tag", schema = "master",
-            joinColumns = @JoinColumn(name = "character_id"),
+            joinColumns = @JoinColumn(name = "character_detail_id"),
             inverseJoinColumns = @JoinColumn(name = "tag_id")
     )
     private List<Tag> tags;

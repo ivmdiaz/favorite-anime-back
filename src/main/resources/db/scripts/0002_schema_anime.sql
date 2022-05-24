@@ -30,13 +30,13 @@ alter table if exists anime.devil_fruit add constraint fk_devil_fruit_image_id f
 create table anime.character_devil_fruit
 (
     id             serial  not null,
-    character_id   int8    not null,
+    character_detail_id   int8    not null,
     devil_fruit_id int8    not null,
     active         boolean not null default false,
     primary key (id)
 );
 alter table if exists anime.character_devil_fruit add constraint fk_character_devil_fruit_devil_fruit_id foreign key (devil_fruit_id) references anime.devil_fruit (id);
-alter table if exists anime.character_devil_fruit add constraint fk_character_devil_fruit_character_id foreign key (character_id) references master.character (id);
+alter table if exists anime.character_devil_fruit add constraint fk_character_devil_fruit_character_detail_id foreign key (character_detail_id) references master.character_detail (id);
 create unique index uk_character_devil_fruit_01 on anime.character_devil_fruit (devil_fruit_id, active) where active is true;
 
 -- # END

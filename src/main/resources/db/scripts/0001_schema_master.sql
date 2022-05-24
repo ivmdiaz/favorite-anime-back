@@ -97,45 +97,46 @@ create table master.character
 alter table if exists master.character add constraint fk_character_series_id foreign key (series_id) references master.series (id);
 alter table if exists master.character add constraint fk_character_image_id foreign key (image_id) references master.image (id);
 
-create table master.character_summary
+create table master.character_detail
 (
     id           serial not null,
     character_id int8   not null,
     location_id  int8   not null,
+    code         character varying(20),
     introduction text   not null,
     history      text   not null,
     abilities    text   not null,
     primary key (id)
 );
-alter table if exists master.character_summary add constraint fk_character_summary_character_id foreign key (character_id) references master.character (id);
-alter table if exists master.character_summary add constraint fk_character_summary_location_id foreign key (location_id) references master.location (id);
+alter table if exists master.character_detail add constraint fk_character_detail_character_id foreign key (character_id) references master.character (id);
+alter table if exists master.character_detail add constraint fk_character_detail_location_id foreign key (location_id) references master.location (id);
+create unique index uk_character_detail_01 on master.character_detail (code);
 
 create table master.character_gallery
 (
-    character_id int8 not null,
+    character_detail_id int8 not null,
     image_id     int8 not null,
-    primary key (character_id, image_id)
+    primary key (character_detail_id, image_id)
 );
-alter table if exists master.character_gallery add constraint fk_character_gallery_character_id foreign key (character_id) references master.character (id);
+alter table if exists master.character_gallery add constraint fk_character_gallery_character_detail_id foreign key (character_detail_id) references master.character_detail (id);
 alter table if exists master.character_gallery add constraint fk_character_gallery_image_id foreign key (image_id) references master.image (id);
 
 create table master.character_tag
 (
-    character_id int8 not null,
+    character_detail_id int8 not null,
     tag_id       int8 not null,
-    primary key (character_id, tag_id)
+    primary key (character_detail_id, tag_id)
 );
-alter table if exists master.character_tag add constraint fk_character_tag_character_id foreign key (character_id) references master.character (id);
+alter table if exists master.character_tag add constraint fk_character_tag_character_detail_id foreign key (character_detail_id) references master.character_detail (id);
 alter table if exists master.character_tag add constraint fk_character_tag_tag_id foreign key (tag_id) references master.tag (id);
 
 create table master.character_relationship
 (
-    id                        serial not null,
+    character_detail_id       int8   not null,
     relationship_id           int8   not null,
     character_id              int8   not null,
-    relationship_character_id int8   not null,
-    primary key (id)
+    primary key (character_detail_id, relationship_id, character_id)
 );
+alter table if exists master.character_relationship add constraint fk_character_relationship_character_detail_id foreign key (character_detail_id) references master.character_detail (id);
 alter table if exists master.character_relationship add constraint fk_character_relationship_relationship_id foreign key (relationship_id) references master.relationship (id);
 alter table if exists master.character_relationship add constraint fk_character_relationship_character_id foreign key (character_id) references master.character (id);
-alter table if exists master.character_relationship add constraint fk_character_relationship_relationship_character_id foreign key (relationship_character_id) references master.character (id);

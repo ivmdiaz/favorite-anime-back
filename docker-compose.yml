@@ -1,0 +1,24 @@
+version: '3.3'
+
+services:
+  db:
+    container_name: bd_ivmdiaz
+    user: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    image: postgres:12.6
+    restart: always
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready", "-q", "-d", "postgres", "-U", "postgres" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    ports:
+      - "5434:5432"
+#    volumes:
+#      - /private/var/lib/postgresql/ivmdiaz:/var/lib/postgresql
+
+volumes:
+  database-data:

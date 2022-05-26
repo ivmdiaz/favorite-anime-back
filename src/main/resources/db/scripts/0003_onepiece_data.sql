@@ -13,6 +13,7 @@ _series_id := (select id from master.series where code = 'OP01');
 
 insert into master.relationship (series_id, code, name) values
 (_series_id, 'OPRS01', 'Nakama'),
+(_series_id, 'OPRS02', 'Captain'),
 (_series_id, 'GERS01', 'Father'),
 (_series_id, 'GERS02', 'Brother'),
 (_series_id, 'GERS03', 'Grandfather'),
